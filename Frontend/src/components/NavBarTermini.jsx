@@ -17,15 +17,13 @@ export default function NavBarTermini() {
               target='_blank' >Swagger</Nav.Link>
               
               <NavDropdown title="Programi" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.1">Korisnici</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Another action
+                  Tereni
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">Termini</NavDropdown.Item>
+                
+                
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
