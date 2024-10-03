@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TerminiZaTerene.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +15,17 @@ builder.Services.AddDbContext<BazaTermina>(opcije =>
 {
 
     opcije.UseSqlServer(builder.Configuration.GetConnectionString("Baza"));
+});
+
+// Svi se od svuda na sve moguæe naèine mogu spojitina naš API
+// Čitati https://code-maze.com/aspnetcore-webapi-best-practices/
+builder.Services.AddCors(opcije =>
+{
+    opcije.AddPolicy("CorsPolicy",
+        builder =>
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+    );
+
 });
 
 var app = builder.Build();
@@ -37,5 +48,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("CorsPolicy");
 
 app.Run();
