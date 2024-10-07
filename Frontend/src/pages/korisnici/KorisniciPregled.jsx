@@ -23,10 +23,20 @@ export default function KorisniciPregled() {
 
     }, [])
 
+    function nijeDefinirano(kontakt) {
+        if (kontakt==null) {
+            return 'Nije definirano'
+        }
+        return kontakt
+
+    }
+
+    
+
     return(
         <>
         <Table striped border hover responsive>
-            <thead>
+            <thead >
                 <tr>
                     <th>Ime</th>
                     <th>Prezime</th>
@@ -46,7 +56,7 @@ export default function KorisniciPregled() {
                             {korisnik.prezime}
                         </td>
                         <td>
-                            {korisnik.brojMob}
+                            {nijeDefinirano(korisnik.brojMob)}
                         </td>
                         <td>
                             {korisnik.email}
