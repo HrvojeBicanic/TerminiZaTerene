@@ -10,12 +10,12 @@ export default function KorisniciPregled() {
     const[korisnici, setKorisnici] = useState()
 
     async function dohvatiKorisnike(){
-        const odogovr = await KorisnikService.get()
+        const odgovor = await KorisnikService.get()
         if(odgovor.greska){
             alert(odgovor.poruka)
             return
     }
-    setKorisnici(odogovr.poruka)
+    setKorisnici(odgovor.poruka)
 }
     //hook
     useEffect(()=>{
