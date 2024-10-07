@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import KorisnikService from "../../services/KorisnikService"
-import { Table } from "react-bootstrap"
+import { Button, Table } from "react-bootstrap"
 
 
 
@@ -30,6 +30,25 @@ export default function KorisniciPregled() {
         return kontakt
 
     }
+
+    function obrisi(id) {
+    if (!confirm('Sigurno obrisati?')){
+            return
+    }
+        brisanjeKorisnika(id)
+    }
+
+    async function brisanjeKorisnika (id) { 
+
+    const odgovor = await KorisnikService.brisanje(id)
+    if (odgovor.greska) {
+        alert(odgovor.poruka)
+        return
+    }
+    dohvatiKorisnike()
+}
+
+
 
     
 
@@ -64,7 +83,13 @@ export default function KorisniciPregled() {
                         <td>
                             {korisnik.lozinka}
                         </td>
-                        <td>Akcija</td>
+                        <td>
+                            <Button
+                            onClick={()=>obrisi(korisnik.id)}>
+
+                                Ukloni
+                            </Button>
+                        </td>
 
                     </tr>
                 ))}
