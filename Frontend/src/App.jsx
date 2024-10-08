@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { RouteNames } from './constant';
 import Pocetna from './pages/Pocetna';
 import KorisniciPregled from './pages/korisnici/KorisniciPregled';
+import KorisniciDodaj from './pages/korisnici/KorisniciDodaj';
 
 
 function App(){
@@ -24,6 +25,8 @@ function App(){
           <Route path={RouteNames.HOME} element={<Pocetna/>} />
 
           <Route path={RouteNames.KORISNIK_PREGLED} element={<KorisniciPregled/>} />
+
+          <Route path={RouteNames.KORISNIK_NOVI} element={<KorisniciDodaj/>} />
 
         </Routes>
         <hr/>

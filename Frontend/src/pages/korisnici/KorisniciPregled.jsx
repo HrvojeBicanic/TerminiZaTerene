@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react"
 import KorisnikService from "../../services/KorisnikService"
 import { Button, Table } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import { RouteNames } from "../../constant"
 
 
 
@@ -15,6 +17,7 @@ export default function KorisniciPregled() {
             alert(odgovor.poruka)
             return
     }
+    
     setKorisnici(odgovor.poruka)
 }
     //hook
@@ -54,7 +57,12 @@ export default function KorisniciPregled() {
 
     return(
         <>
+        
+        <Link to={RouteNames.KORISNIK_NOVI}
+        className="btn btn-success siroko"
+        >Dodaj novog korisnika</Link>
         <Table striped border hover responsive>
+            
             <thead >
                 <tr>
                     <th>Ime</th>
@@ -85,6 +93,7 @@ export default function KorisniciPregled() {
                         </td>
                         <td>
                             <Button
+                            variant="danger"
                             onClick={()=>obrisi(korisnik.id)}>
 
                                 Ukloni
@@ -96,6 +105,7 @@ export default function KorisniciPregled() {
             </tbody>
 
         </Table>
+        
         </>
     )
     
