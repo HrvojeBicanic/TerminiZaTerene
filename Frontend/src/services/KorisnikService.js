@@ -33,7 +33,22 @@ async function brisanje (id) {
 
 }
 
+async function dodaj (korisnik) {
+
+    return await HttpService.get('/Korisnik', korisnik)
+    .then ((odgovor)=>{
+        return {greska: false, poruka: 'Korisnik dodan'}
+    })
+    .catch((e)=>{
+
+    //console.log(e)
+    return {greska: true, poruka: 'Problem kod dodavanja korisnika'}
+    })
+
+}
+
 export default {
     get,
-    brisanje
+    brisanje,
+    dodaj
 }

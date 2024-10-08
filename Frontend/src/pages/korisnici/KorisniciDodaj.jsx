@@ -2,14 +2,38 @@ import { Link, useNavigate } from "react-router-dom"
 import KorisnikService from "../../services/KorisnikService"
 import { Button, Row, Col, Form} from "react-bootstrap"
 import { RouteNames } from "../../constant"
-import { useState } from "react"
+import {  useState } from "react"
 
 
 
 export default function KorisniciDodaj() {
+
     const navigate = useNavigate() 
+
+    async function dodaj(korisnik) {
+        //console.log(korisnik)
+        //console.log(JSON.stringify(korisnik))
+        const odgovor = await KorisnikService.dodaj(korisnik)
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return;
+    }
+    navigate(RouteNames.KORISNIK_PREGLED)
+}
+
     function obradiSubmit(e){ // e je event
         e.preventDefault(); // nemoj odraditi zahtjev na server
+        let podaci = new FormData(e.target)
+        //console.log(podaci.get('ime'))
+        dodaj({
+            ime: podaci.get('ime'),
+            prezime: podaci.get('prezime'),
+            brojMob: podaci.get('brojMob'),
+            email: podaci.get('email'),
+            lozinka: podaci.get('lozinka')
+
+
+        })
     }  
 
 
@@ -21,12 +45,12 @@ export default function KorisniciDodaj() {
         <Form onSubmit={obradiSubmit}>
         <Form.Group className="mb-3" controlId="ime">
         <Form.Label>Unesite ime korisnika:</Form.Label>
-        <Form.Control type="text" minLength={2} maxLength={20} ime="naziv"  placeholder="Pero"  required pattern="[A-Za-z]+" />
+        <Form.Control type="text" minLength={2} maxLength={20} ime="naziv"  placeholder="Pero"  required />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="prezime">
         <Form.Label>Unesite prezime korisnika:</Form.Label>
-        <Form.Control type="text" minLength={2} maxLength={20} name="prezime" placeholder="Perić" required pattern="[A-Za-z]+"/>
+        <Form.Control type="text" minLength={2} maxLength={20} name="prezime" placeholder="Perić" required/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="brojMob">

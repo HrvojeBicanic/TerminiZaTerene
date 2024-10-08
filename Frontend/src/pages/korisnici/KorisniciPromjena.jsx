@@ -7,7 +7,10 @@ import { useState } from "react"
 
 
 export default function KorisniciPromjena() {
-    const navigate = useNavigate() 
+
+    const Navigate = useNavigate() 
+
+    
     function obradiSubmit(e){ // e je event
         e.preventDefault(); // nemoj odraditi zahtjev na server
     }  
@@ -19,14 +22,15 @@ export default function KorisniciPromjena() {
         <>
         <h2 className="naslov roboto-light">Dodaj korisnika</h2>
         <Form onSubmit={obradiSubmit}>
-        <Form.Group className="mb-3" controlId="ime">
+
+      <Form.Group className="mb-3" controlId="ime">
         <Form.Label>Unesite ime korisnika:</Form.Label>
-        <Form.Control type="text" minLength={2} maxLength={20} ime="naziv"  placeholder="Pero"  required pattern="[A-Za-z]+" />
+        <Form.Control type="text" minLength={2} maxLength={20} ime="naziv"  placeholder="Pero"  required  />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="prezime">
         <Form.Label>Unesite prezime korisnika:</Form.Label>
-        <Form.Control type="text" minLength={2} maxLength={20} name="prezime" placeholder="Perić" required pattern="[A-Za-z]+"/>
+        <Form.Control type="text" minLength={2} maxLength={20} name="prezime" placeholder="Perić" required/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="brojMob">
