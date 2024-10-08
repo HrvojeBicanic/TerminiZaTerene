@@ -45,7 +45,7 @@ export default function KorisniciDodaj() {
         <Form onSubmit={obradiSubmit}>
         <Form.Group className="mb-3" controlId="ime">
         <Form.Label>Unesite ime korisnika:</Form.Label>
-        <Form.Control type="text" minLength={2} maxLength={20} ime="naziv"  placeholder="Pero"  required />
+        <Form.Control type="text" minLength={2} maxLength={20} name="ime"  placeholder="Pero"  required />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="prezime">

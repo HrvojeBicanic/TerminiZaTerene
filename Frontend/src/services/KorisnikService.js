@@ -35,7 +35,7 @@ async function brisanje (id) {
 
 async function dodaj (korisnik) {
 
-    return await HttpService.get('/Korisnik', korisnik)
+    return await HttpService.post('/Korisnik', korisnik)
     .then ((odgovor)=>{
         return {greska: false, poruka: 'Korisnik dodan'}
     })
