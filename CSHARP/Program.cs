@@ -49,6 +49,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// za potrebe produkcije
+app.UseStaticFiles();
+app.UseDefaultFiles();
+app.MapFallbackToFile("index.html");
+
 app.UseCors("CorsPolicy");
 
 app.Run();
