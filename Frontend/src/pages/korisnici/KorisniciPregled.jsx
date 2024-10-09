@@ -9,6 +9,8 @@ import { RouteNames } from "../../constant"
 
 export default function KorisniciPregled() {
 
+    const navigate = useNavigate()
+
     const[korisnici, setKorisnici] = useState()
 
     async function dohvatiKorisnike(){
@@ -94,12 +96,21 @@ export default function KorisniciPregled() {
                         <td>
                             <Button
                             variant="danger"
+                            style={{ marginRight: '10px' }}
                             onClick={()=>obrisi(korisnik.id)}>
 
                                 Ukloni
                             </Button>
-                        </td>
 
+                            <Button
+                            style={{ marginLeft: '10px' }}
+                            onClick={()=>navigate(`/korisnici/${korisnik.id}`)}
+                            >
+
+                                Promjeni
+                            </Button>
+                            
+                        </td>
                     </tr>
                 ))}
             </tbody>

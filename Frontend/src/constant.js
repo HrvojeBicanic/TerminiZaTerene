@@ -6,8 +6,8 @@ export const RouteNames = {
 
 
     KORISNIK_PREGLED: '/korisnici',
-    KORISNIK_NOVI: '/korisnici/dodaj'
-
+    KORISNIK_NOVI: '/korisnici/dodaj',
+    KORISNIK_PROMJENA: '/korisnici/:id'
     
 }
 

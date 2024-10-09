@@ -47,8 +47,25 @@ async function dodaj (korisnik) {
 
 }
 
+async function getBySifra (id) {
+
+    return await HttpService.get('/Korisnik/' + id) 
+    .then ((odgovor)=>{
+
+        return {greska: false, poruka: odgovor.data}
+    })
+    .catch((e)=>{
+
+    //console.log(e)
+    return {greska: true, poruka: 'Problem kod dohvaćanja korisnka. ID: ' + id}
+    })
+}
+
+
+
 export default {
     get,
     brisanje,
-    dodaj
+    dodaj,
+    getBySifra
 }
