@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 export default function KorisniciPromjena() {
 
     const [korisnik, setKorisnik] = useState({})
-    const Navigate = useNavigate() 
+    const navigate = useNavigate() 
     const routeParams = useParams()
 
     async function dohvatiKorisnika(){
@@ -26,10 +26,32 @@ export default function KorisniciPromjena() {
       dohvatiKorisnika()
 
   }, [])
+
+  async function promjena(korisnik){
+    const odgovor = await KorisnikService.promjena(routeParams.id,korisnik);
+    if(odgovor.greska){
+        alert(odgovor.poruka);
+        return;
+    }
+    navigate(RouteNames.KORISNIK_PREGLED)
+    
+}
     
     function obradiSubmit(e){ // e je event
         e.preventDefault(); // nemoj odraditi zahtjev na server
-    }  
+        let podaci = new FormData(e.target)
+        promjena({
+          ime: podaci.get('ime'),
+          prezime: podaci.get('prezime'),
+          brojMob: podaci.get('brojMob'),
+          email: podaci.get('email'),
+          lozinka: podaci.get('lozinka')
+
+
+      })
+  }  
+
+  
 
 
 
@@ -41,7 +63,7 @@ export default function KorisniciPromjena() {
 
       <Form.Group className="mb-3" controlId="ime">
         <Form.Label>Unesite ime korisnika:</Form.Label>
-        <Form.Control type="text" minLength={2} maxLength={20} ime="naziv"  placeholder="Pero"  required
+        <Form.Control type="text" minLength={2} maxLength={20} name="ime"  placeholder="Pero"  required
         defaultValue={korisnik.ime}  />
       </Form.Group>
 

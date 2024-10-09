@@ -47,6 +47,20 @@ async function dodaj (korisnik) {
 
 }
 
+async function promjena (id, korisnik) {
+
+    return await HttpService.put('/Korisnik/'+ id, korisnik)
+    .then ((odgovor)=>{
+        return {greska: false, poruka: 'Korisnik dodan'}
+    })
+    .catch((e)=>{
+
+    //console.log(e)
+    return {greska: true, poruka: 'Problem kod dodavanja korisnika'}
+    })
+
+}
+
 async function getBySifra (id) {
 
     return await HttpService.get('/Korisnik/' + id) 
@@ -67,5 +81,6 @@ export default {
     get,
     brisanje,
     dodaj,
-    getBySifra
+    getBySifra,
+    promjena
 }
