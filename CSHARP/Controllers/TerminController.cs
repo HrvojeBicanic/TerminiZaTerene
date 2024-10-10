@@ -15,6 +15,7 @@ namespace TerminiZaTerene.Controllers
             _context = context;
         }
 
+        //Rute
         [HttpGet]
         public IActionResult Get()
         {
@@ -45,10 +46,10 @@ namespace TerminiZaTerene.Controllers
             var terminBaza = _context.Termini.Find(id);
 
             // za sada ručno, kasnije mapper
-            terminBaza.KorisnikId = termin.KorisnikId;
+            terminBaza.Korisnik = termin.Korisnik;
             terminBaza.Pocetak = termin.Pocetak;
             terminBaza.Kraj = termin.Kraj;
-            terminBaza.TerenId = termin.TerenId;
+            terminBaza.Teren = termin.Teren;
             terminBaza.Cijena = termin.Cijena;
             
 

@@ -6,14 +6,15 @@ namespace TerminiZaTerene.Data
     public class BazaTermina : DbContext
     {
 
-    public BazaTermina(DbContextOptions<BazaTermina> opcije) : base(opcije) 
+        public BazaTermina(DbContextOptions<BazaTermina> opcije) : base(opcije)
         {
-        
+
         }
 
         public DbSet<Korisnik> Korisnici { get; set; }
         public DbSet<Teren> Tereni { get; set; }
         public DbSet<Termin> Termini { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,8 +34,10 @@ namespace TerminiZaTerene.Data
                     v => v.HasValue ? $"{v.Value:yyyy-MM-dd HH:mm:ss}" : null,
                     v => DateTimeOffset.Parse(v ?? "")
                 );
+
+
+
         }
-
-
     }
 }
+

@@ -15,7 +15,7 @@ namespace TerminiZaTerene.Controllers
             _context = context;
         }
 
-
+        //Rute
         [HttpGet]
         public IActionResult Get()
         {

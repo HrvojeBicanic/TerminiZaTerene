@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TerminiZaTerene.Data;
+using TerminiZaTerene.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,9 @@ builder.Services.AddCors(opcije =>
     );
 
 });
+
+// automapper
+builder.Services.AddAutoMapper(typeof(TerminiZaTereneMappingProfile));
 
 var app = builder.Build();
 
