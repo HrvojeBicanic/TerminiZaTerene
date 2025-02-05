@@ -9,7 +9,6 @@
 - User registration and authentication.
 - Browse available sports fields.
 - Book and manage reservations.
-- View booking history.
 - Administrative panel for managing fields and reservations.
 
 ---
